@@ -1,9 +1,10 @@
 
-import {Button, Slider} from "@mui/material";
 import './App.css';
 import React, {useState} from "react";
 import {Home} from '../home/home';
-import {Todo} from '../todo/todo';
+import {TodoTitle} from '../todoTitle/todoTitle';
+import {TodoEdit} from '../todoEdit/todoEdit';
+import {TodoTrial} from '../todoTrial/todoTrial';
 
 
 function App() {
@@ -11,9 +12,11 @@ function App() {
   return (
     <div>
       <Home/>
-      <Todo/>
+      <TodoTitle/>
+      <TodoEdit/>
+      <TodoTrial/>
     </div>
-    
+
   );
 }
 

@@ -1,7 +1,7 @@
 import {Button, Box, Card, CardContent, Typography} from "@mui/material";
 import './home.css';
 import React, {useState} from "react";
-import { typography } from "@mui/system";
+
 
 
 export const Home = () => {
@@ -34,4 +34,3 @@ export const Home = () => {
     </div>
   );
 };
-
