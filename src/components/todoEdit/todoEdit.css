@@ -1,7 +1,17 @@
-.darkGarbage {
+.complete {
+  color: black;
+  background-color: grey;
+}
+
+.complete > #delete {
   color: black;
 }
 
-.lightGarbage {
+.complete > #checkOff {
+  color: black;
+}
+
+.incomplete {
   color: red;
+  background-color: white;
 }
