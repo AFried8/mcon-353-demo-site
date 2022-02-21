@@ -1,7 +1,11 @@
 import React, {useState} from 'react';
-import {TextField, InputAdornment, Box, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Button, ListItemAvatar} from "@mui/material";
+import './todoEdit.css';
+import {TextField, InputAdornment, Box, List, ListItem, ListItemText, Button, } from "@mui/material";
 import Add from '@mui/icons-material/Add';
-import DeleteIcon from '@mui/icons-material/Delete';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
+import { CoronavirusSharp } from '@mui/icons-material';
+import { grey } from '@mui/material/colors';
 
 
 export const TodoEdit = () => {
@@ -24,38 +28,33 @@ export const TodoEdit = () => {
         console.log(tasks);
         console.log(index);
         const tempList = [...tasks];
-        //const tempList;
-        // for(const i = 0; i<tasks.length; tasks++){
-        //     tempList.push(tasks[i]);
-        // }
-        const oldTask = tempList.splice[index,1];
+        tempList.splice(index,1);
+        setTasks(tempList);
+    }
+
+    function check(index){
+        console.log(tasks.at(index).checked);
+        tasks.at(index).checked = !tasks.at(index).checked;
+        console.log(tasks.at(index).checked);
+        const tempList = [...tasks];
         setTasks(tempList);
     }
 
     return (
-        <div>
+        <div align="center">
             <TextField
                 align = "center"
                 id="inputTodo"
                 size = "large"
                 value = {currentTask}
                 onChange = {handleChange}
-                // InputProps={{
-                // endAdornment: (
-                //     <InputAdornment 
-                //         onClick = {handleAdd}
-                //         position="end">
-                //     <Add />
-                //     </InputAdornment>
-                // ),
-                // }}
                 variant="standard"
             />
 
             <Button>
                 <InputAdornment 
-                        onClick = {handleAdd}
-                        position="end">
+                    onClick = {handleAdd}
+                    position="end">
                     <Add />
                 </InputAdornment>
             </Button>
@@ -64,22 +63,57 @@ export const TodoEdit = () => {
                 <nav aria-label="tasks">
                     <List>
                     {tasks.map((item) => (
-                        <ListItem disablePadding>
-                            <ListItemText primary = {item.name}/>
-                            <Button value={tasks.indexOf(item)} onClick = {() => handleDelete(tasks.indexOf(item))}> 
-                                <DeleteIcon />
-                            </Button>
-                        </ListItem>
+                        <TodoItem name ={item.name} index={tasks.indexOf(item)} 
+                        handleDelete={handleDelete} check={check} checked={item.checked}/>
                     ))}
                     </List>
                     
                 </nav>
             </Box>
         </div>
-        
-        
-    //   /*(tasks.indexOf(item))*/
     );
-
-    
 } 
+
+const TodoItem = (props) => {
+
+    const defaultColors = ['#FFFFFF',  '#FF0000'];
+
+    const [colors, setColors] = useState(['#FFFFFF',  '#FF0000']);
+    
+    
+    function toggleCheck(index){
+        console.log("current background: " + colors.at(0));
+        console.log("Current accent: " + colors.at(1));
+        console.log("Checking");
+        props.check(index);
+        resetColors();
+        console.log("Checked");
+    }
+
+    function resetColors(){
+        if(props.checked){
+            setColors( ['#C8C8C8',  '#000000']);
+        }
+        else {
+            setColors( ['#FFFFFF',  '#FF0000']);
+        }
+    }
+    return (
+    <Box
+        sx={{
+          backgroundColor: colors.at(0)
+        }}
+    >
+    <ListItem >
+        <ListItemText primary = {props.name}/>
+        <Button  onClick = {() => props.handleDelete(props.index)} style={{ color: colors.at(1)}} > 
+            <DeleteOutlineIcon className= {props.checked? "darkGarbage": "lightGarbage"}/>
+        </Button>
+        <Button onClick = {() => toggleCheck(props.index)} style={{ color: colors.at(1)}}> 
+            <CheckBoxOutlinedIcon />
+        </Button>
+    </ListItem>
+    </Box>
+    );
+}
+
