@@ -1,19 +1,20 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import './todoEdit.css';
 import {TextField, InputAdornment, Box, List, ListItem, ListItemText, Button, } from "@mui/material";
 import Add from '@mui/icons-material/Add';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
+import {TodoContext} from '../app/App.jsx';
 
 
 export const TodoEdit = () => {
 
-    const [tasks, setTasks] = useState([]);
+    const {tasks, setTasks} = useContext(TodoContext);
     const [currentTask, setCurrentTask] = useState("Enter Task");
 
     function handleChange(event){
         setCurrentTask(event.target.value);
-    }
+    };
 
     function handleAdd() {
         const task = {name: currentTask, checked: true};
@@ -21,15 +22,13 @@ export const TodoEdit = () => {
         console.log("adding");
         setCurrentTask("");
         setTasks(newList);
-    }
+    };
 
     function handleDelete(index) {
-        console.log(tasks);
-        console.log(index);
         const tempList = [...tasks];
         tempList.splice(index,1);
         setTasks(tempList);
-    }
+    };
 
     function check(index){
         console.log(tasks.at(index).checked);
@@ -37,7 +36,7 @@ export const TodoEdit = () => {
         console.log(tasks.at(index).checked);
         const tempList = [...tasks];
         setTasks(tempList);
-    }
+    };
 
     return (
         <div align="center">
@@ -71,7 +70,7 @@ export const TodoEdit = () => {
             </Box>
         </div>
     );
-} 
+};
 
 const TodoItem = (props) => {
 
@@ -80,14 +79,14 @@ const TodoItem = (props) => {
     function toggleCheck(index){
         props.check(index);
         resetColors();
-    }
+    };
 
     function resetColors(){
         if(props.checked)
             setColors( ['#C8C8C8',  '#000000']);
         else 
             setColors( ['#FFFFFF',  '#560ba6']);
-    }
+    };
 
     return (
     <Box
@@ -107,5 +106,4 @@ const TodoItem = (props) => {
     </ListItem>
     </Box>
     );
-}
-
+};

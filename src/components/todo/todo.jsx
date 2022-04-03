@@ -1,4 +1,3 @@
-
 import {TodoTitle} from '../todoTitle/todoTitle';
 import {TodoEdit} from '../todoEdit/todoEdit';
 
@@ -10,4 +9,4 @@ export const Todo = () => {
           <TodoEdit/>
       </div>
     );
-  }
+  };

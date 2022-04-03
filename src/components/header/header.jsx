@@ -8,10 +8,6 @@ import { useNavigate } from 'react-router-dom';
 export const Header = () => {
     let navigate = useNavigate();
 
-    const goHome = () => {
-        navigate('/');
-      };
-
     const navTo = (route) => {
         navigate(route);
     };
