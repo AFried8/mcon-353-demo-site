@@ -20,11 +20,17 @@ export const Header = () => {
                 color="inherit"
                 onClick={() => navTo('/')}
                 >
-                Demo</Button>
+                Home</Button>
             <Button 
                 color="inherit"
                 onClick={() => navTo('/todo')}
-            >Todo List</Button>
+              >
+              Todo List</Button>
+            <Button
+              color="inherit"
+              onClick = {() => navTo('/chat')}
+              >
+              Chat</Button>
         </Toolbar>
       </AppBar>
     </Box>

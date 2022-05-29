@@ -73,20 +73,19 @@ export const TodoEdit = () => {
 };
 
 const TodoItem = (props) => {
-
-    const [colors, setColors] = useState(['#FFFFFF',  '#560ba6']);
+    const colors = props.checked?  ['#C8C8C8',  '#000000']: ['#FFFFFF',  '#560ba6'];
     
     function toggleCheck(index){
         props.check(index);
-        resetColors();
     };
 
-    function resetColors(){
-        if(props.checked)
-            setColors( ['#C8C8C8',  '#000000']);
-        else 
-            setColors( ['#FFFFFF',  '#560ba6']);
-    };
+    // function resetColors(){
+    //     if(props.checked)
+    //         const colors = 
+    //         setColors( ['#C8C8C8',  '#000000']);
+    //     else 
+    //         setColors( ['#FFFFFF',  '#560ba6']);
+    // };
 
     return (
     <Box

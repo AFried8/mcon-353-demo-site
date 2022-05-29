@@ -1,0 +1,9 @@
+.MuiListItemText-primary{
+   font-size:small;
+   color: gray
+}
+
+.MuiListItemText-secondary{
+    font-size:larger;
+    color: black;
+}
