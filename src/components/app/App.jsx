@@ -4,7 +4,7 @@ import {Header} from '../header/header';
 import {Home} from '../home/home';
 import {Todo} from '../todo/todo';
 import {Chatting} from '../chat/Chatting';
-import {BrowserRouter, Routes, Route} from "react-router-dom";
+import {HashRouter, Routes, Route} from "react-router-dom";
 
 export const TodoContext = React.createContext();
 
@@ -18,14 +18,14 @@ function App() {
         tasks, setTasks
       }}>
       <div className="App">
-          <BrowserRouter>
+          <HashRouter>
           <Header/>
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/todo" element={<Todo />} /> 
                 <Route path="/chat" element={<Chatting />}/>
             </Routes>
-          </BrowserRouter>
+          </HashRouter>
       </div>
     </TodoContext.Provider>
   );
