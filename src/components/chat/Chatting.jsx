@@ -135,8 +135,6 @@ const AddChat = (props) => {
             body: JSON.stringify(chat),})
             .then((response) => response.json())
             .then((data) => setChatData(data.Item));
-          
-            setCurrent("");
     }
       
     return (
