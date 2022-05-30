@@ -73,7 +73,7 @@ export const TodoEdit = () => {
 };
 
 const TodoItem = (props) => {
-    const colors = props.checked?  ['#C8C8C8',  '#000000']: ['#FFFFFF',  '#560ba6'];
+    const colors = props.checked?  ['#FFFFFF',  '#560ba6']: ['#C8C8C8',  '#000000'];
     
     function toggleCheck(index){
         props.check(index);
